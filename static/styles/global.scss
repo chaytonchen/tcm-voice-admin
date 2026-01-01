@@ -1,0 +1,457 @@
+/* 全局样式重置 */
+@import "./atomic.scss";
+@import "./font/iconfont.css";
+
+/* 全局样式重置 */
+view,
+text,
+button,
+input,
+image,
+textarea,
+navigator,
+swiper,
+swiper-item,
+scroll-view {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+  font-size: $font-size-base;
+  line-height: $line-height-base;
+  color: $text-primary;
+  background-color: $bg-primary;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* 页面容器样式 */
+.page-container {
+  width: 100%;
+  min-height: 100vh;
+  background-color: $bg-secondary;
+}
+
+uni-page-body {
+  padding: 15px;
+  box-sizing: border-box;
+  height: calc(100vh - 90px);
+}
+
+/* 卡片样式 */
+.card {
+  background-color: $bg-primary;
+  border-radius: $radius-medium;
+  padding: $spacing-base-px;
+  margin-bottom: $spacing-base-px;
+  box-shadow: $shadow-small;
+}
+
+/* 统一的按钮样式 */
+/* 基础按钮样式 - 类似Element UI的标准化按钮系统 */
+.btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: $btn-height-md; // 默认中等高度
+  padding: 0 $btn-padding-md; // 默认中等内边距
+  border-radius: $btn-radius-base;
+  font-size: $font-size-button; // 使用按钮专用字体大小15px
+  font-weight: 500;
+  text-align: center;
+  transition: all 0.2s ease;
+  cursor: pointer;
+  border: none;
+  outline: none;
+  white-space: nowrap;
+  // 添加点击反馈效果
+  box-shadow: $btn-shadow-base;
+}
+
+.btn:active {
+  transform: scale(0.98);
+  box-shadow: $btn-shadow-active;
+}
+
+// 主要按钮 - 主色调
+.btn-primary {
+  background-color: $primary-color;
+  color: #ffffff;
+}
+
+.btn-primary:active {
+  background-color: darken($primary-color, 5%);
+}
+
+// 次要按钮 - 灰色背景
+.btn-secondary {
+  background-color: $bg-secondary;
+  color: $text-primary;
+  border: 1px solid $border-color;
+}
+
+.btn-secondary:active {
+  background-color: $border-color;
+}
+
+// 危险按钮 - 红色
+.btn-danger {
+  background-color: $error-color;
+  color: #ffffff;
+}
+
+.btn-danger:active {
+  background-color: darken($error-color, 5%);
+}
+
+/* 技师端按钮样式 */
+.tech-end .btn {
+  font-size: $font-size-button-b; // 技师端按钮文字16px
+}
+
+/* 可点击元素通用点击反馈 */
+.clickable,
+[data-tap-active],
+[hover-class] {
+  transition: all 0.2s ease;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.clickable:active,
+[data-tap-active]:active {
+  opacity: 0.8;
+  transform: scale(0.98);
+}
+
+/* 技师端字体放大样式 */
+.tech-end {
+  /* 技师端正文字体15px (放大10%) */
+  font-size: $font-size-sm-b;
+}
+
+/* 防止内容溢出容器 */
+view,
+text,
+button,
+input,
+image,
+textarea,
+navigator,
+swiper,
+swiper-item,
+scroll-view {
+  max-width: 100%;
+  box-sizing: border-box;
+}
+// 基础变量（请根据你的设计稿调整这些值）
+$design-width: 1920; // 设计稿宽度（PC端）
+$btn-font-size-xs: 12px;
+$btn-font-size-sm: 14px;
+$btn-font-size-df: 16px;
+$btn-font-size-lg: 18px;
+
+$radius-small: 4px;
+$radius-medium: 8px;
+$radius-large: 12px;
+
+$primary-color: $primary-color;
+$text-secondary: $text-secondary;
+$success-color: $success-color;
+$warning-color: $warning-color;
+$error-color: $error-color;
+$info-color: $info-color;
+$info-text: $info-text;
+$bg-warning-light: $bg-warning-light;
+$warning-color-light: $warning-color-light;
+$bg-success-light: $bg-success-light;
+$success-color-light: $success-color-light;
+$bg-info-light: $bg-info-light;
+$info-color-light: $info-color-light;
+
+$btn-radius-base: $radius-medium;
+$btn-radius-round: 9999px;
+$btn-radius-circle: 50%;
+
+// 颜色映射表
+$color-map: (
+  "black": #000000,
+  "white": #ffffff,
+  "gray": #9ca3af,
+  "red": #ef4444,
+  "orange": #f97316,
+  "yellow": #f59e0b,
+  "green": #10b981,
+  "blue": #3b82f6,
+  "indigo": #6366f1,
+  "purple": #8b5cf6,
+  "pink": #ec4899
+);
+
+// 按钮尺寸
+$btn-sizes: (
+  "xs": (
+    "font-size": $btn-font-size-xs,
+    "padding-y": 4px,
+    "padding-x": 8px,
+    "border-radius": $radius-small
+  ),
+  "sm": (
+    "font-size": $btn-font-size-sm,
+    "padding-y": 6px,
+    "padding-x": 12px,
+    "border-radius": $radius-small
+  ),
+  "df": (
+    "font-size": $btn-font-size-df,
+    "padding-y": 8px,
+    "padding-x": 16px,
+    "border-radius": $radius-medium
+  ),
+  "lg": (
+    "font-size": $btn-font-size-lg,
+    "padding-y": 10px,
+    "padding-x": 20px,
+    "border-radius": $radius-large
+  )
+);
+
+@each $size, $props in $btn-sizes {
+  .btn-#{$size} {
+    font-size: map-get($props, "font-size");
+    padding: map-get($props, "padding-y") map-get($props, "padding-x");
+    border-radius: map-get($props, "border-radius");
+  }
+}
+
+// 按钮圆角
+.btn-radius {
+  border-radius: $btn-radius-base;
+}
+.btn-round {
+  border-radius: $btn-radius-round;
+}
+.btn-circle {
+  border-radius: $btn-radius-circle;
+}
+
+// 按钮样式变体
+$btn-variants: (
+  "primary": (
+    "background-color": $primary-color,
+    "color": white,
+    "border": none
+  ),
+  "secondary": (
+    "background-color": $text-secondary,
+    "color": white,
+    "border": none
+  ),
+  "success": (
+    "background-color": $success-color,
+    "color": white,
+    "border": none
+  ),
+  "warning": (
+    "background-color": $warning-color,
+    "color": white,
+    "border": none
+  ),
+  "error": (
+    "background-color": $error-color,
+    "color": white,
+    "border": none
+  ),
+  "info": (
+    "background-color": $info-color,
+    "color": $info-text,
+    "border": none
+  ),
+  "outline": (
+    "background-color": transparent,
+    "border": 1px solid $primary-color,
+    "color": $primary-color
+  ),
+  "warning-light": (
+    "background-color": $bg-warning-light,
+    "color": $warning-color-light,
+    "border": none
+  ),
+  "success-light": (
+    "background-color": $bg-success-light,
+    "color": $success-color-light,
+    "border": none
+  ),
+  "info-light": (
+    "background-color": $bg-info-light,
+    "color": $info-color-light,
+    "border": none
+  )
+);
+
+// 生成变体类及状态
+@each $variant, $props in $btn-variants {
+  .btn-#{$variant} {
+    background-color: map-get($props, "background-color");
+    color: map-get($props, "color");
+    border: map-get($props, "border");
+    transition: all 0.2s ease-in-out;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+
+    &:hover {
+      @if $variant == "primary" {
+        background-color: #4338ca;
+        box-shadow: 0 4px 8px rgba(79, 70, 229, 0.15);
+        transform: translateY(-1px);
+      } @else if $variant == "outline" {
+        background-color: rgba($primary-color, 0.1);
+      } @else if $variant == "warning-light" {
+        background-color: #fde68a;
+      } @else if $variant == "success-light" {
+        background-color: #a7f3d0;
+      } @else if $variant == "info-light" {
+        background-color: #bfdbfe;
+      } @else {
+        filter: brightness(0.9);
+        transform: translateY(-1px);
+      }
+    }
+
+    &:active {
+      @if $variant == "primary" {
+        background-color: #3730a3;
+        box-shadow: 0 2px 4px rgba(79, 70, 229, 0.1);
+      } @else {
+        filter: brightness(0.8);
+      }
+      transform: translateY(0);
+    }
+  }
+}
+
+// 按钮状态
+.btn-disabled {
+  opacity: 0.7;
+  pointer-events: none;
+  cursor: not-allowed;
+  box-shadow: none;
+  transform: none;
+}
+
+// 彩色按钮
+$btn-colors: "black", "white", "gray", "red", "orange", "yellow", "green", "blue", "indigo", "purple", "pink";
+
+@each $color in $btn-colors {
+  $color-value: map-get($color-map, $color);
+
+  // 背景色按钮
+  .btn-#{$color} {
+    background-color: $color-value;
+    color: if($color == white or $color == yellow, black, white);
+    border: none;
+    transition: all 0.2s ease-in-out;
+
+    &:hover {
+      filter: brightness(1.1);
+      transform: translateY(-1px);
+    }
+
+    &:active {
+      filter: brightness(0.9);
+      transform: translateY(0);
+    }
+  }
+
+  // 描边按钮
+  .btn-outline-#{$color} {
+    background-color: transparent;
+    border: 1px solid $color-value;
+    color: $color-value;
+    transition: all 0.2s ease-in-out;
+
+    &:hover {
+      background-color: rgba($color-value, 0.1);
+    }
+  }
+}
+
+/* 滚动条样式 - PC端 */
+/* 针对 WebKit 和 Blink 内核的浏览器 */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #c1c1c1;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #a8a8a8;
+}
+
+/* 为了兼容性，使用标准语法 */
+* {
+  /* Firefox 的标准语法 */
+  scrollbar-width: thin;
+  scrollbar-color: #c1c1c1 #f1f1f1;
+}
+
+.avatar {
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.avatar-xs {
+  width: 16px;
+  height: 16px;
+}
+
+.avatar-sm {
+  width: 32px;
+  height: 32px;
+}
+
+.avatar-df,
+.avatar-md {
+  width: 56px;
+  height: 56px;
+}
+
+.avatar-lg {
+  width: 64px;
+  height: 64px;
+}
+
+.avatar-xl {
+  width: 80px;
+  height: 80px;
+}
+
+/* PC端布局优化 */
+.pc-container {
+  max-width: 1920px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* 响应式布局 */
+@media screen and (max-width: 1200px) {
+  .pc-container {
+    padding: 0 16px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .pc-container {
+    padding: 0 12px;
+  }
+}

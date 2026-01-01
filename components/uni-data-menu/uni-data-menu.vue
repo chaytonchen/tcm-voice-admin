@@ -147,7 +147,7 @@
 						data,
 						count
 					} = res.result
-					this.menus = data
+					this.menus = data          
 					this.userMenu = this.getUserMenu(this.menus)
 				}).catch((err) => {
 					this.mixinDatacomLoading = false

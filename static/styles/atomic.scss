@@ -1,0 +1,1049 @@
+/* 原子CSS文件 - 使用SCSS高级特性动态生成 */
+
+// 导入变量
+@import "./variables.scss";
+
+// ===========================
+// 1. 文本颜色类 - 使用@each循环动态生成
+// ===========================
+@each $name, $color in $color-map {
+  .text-#{$name} {
+    color: #{$color};
+  }
+}
+
+// 额外添加状态颜色
+$status-text-colors: (
+  "primary": $text-primary,
+  "secondary": $text-secondary,
+  "disabled": $text-disabled,
+  "tips": $text-tips,
+  "success": $success-color,
+  "warning": $warning-color,
+  "error": $error-color
+);
+
+@each $name, $color in $status-text-colors {
+  .text-#{$name} {
+    color: #{$color};
+  }
+}
+
+// 文本对齐类
+$text-aligns: (
+  "center": center,
+  "left": left,
+  "right": right
+);
+
+@each $align, $value in $text-aligns {
+  .text-#{$align} {
+    text-align: #{$value};
+  }
+}
+
+// ===========================
+// 2. 背景颜色类 - 使用@each循环动态生成
+// ===========================
+@each $name, $color in $color-map {
+  .bg-#{$name} {
+    background-color: #{$color};
+  }
+}
+
+// 额外添加状态颜色背景
+$status-bg-colors: (
+  "primary": $bg-primary,
+  "secondary": $bg-secondary,
+  "success": $success-color,
+  "warning": $warning-color,
+  "error": $error-color
+);
+
+@each $name, $color in $status-bg-colors {
+  .bg-#{$name} {
+    background-color: #{$color};
+  }
+}
+
+.bg-transparent {
+  background-color: transparent;
+}
+
+// ===========================
+// 3. 透明度类 - 使用@for循环动态生成
+// ===========================
+@for $i from 0 through 10 {
+  $opacity: $i * 0.1;
+  .opacity-#{$i * 10} {
+    opacity: $opacity;
+  }
+}
+
+// ===========================
+// 4. 边框相关类 - 动态生成
+// ===========================
+
+// 边框颜色类
+@each $name, $color in $color-map {
+  .border-#{$name} {
+    border-color: #{$color};
+  }
+}
+
+// 额外添加状态颜色边框
+$status-border-colors: (
+  "primary": $primary-color,
+  "secondary": $text-secondary
+);
+
+@each $name, $color in $status-border-colors {
+  .border-#{$name} {
+    border-color: #{$color};
+  }
+}
+
+// ===========================
+// border-type
+// ===========================
+$border-styles: (
+  "solid": solid,
+  "dashed": dashed,
+  "dotted": dotted
+);
+
+@each $style, $value in $border-styles {
+  .border-#{$style} {
+    border-style: #{$value};
+    border-width: 1px;
+  }
+}
+
+// 边框方向
+$border-directions: top, bottom, left, right;
+
+@each $direction in $border-directions {
+  .border-#{str-slice($direction, 0, 1)} {
+    border-#{$direction}: 1px solid #{$border-color};
+  }
+}
+
+// 边框宽度
+$border-widths: 0, 1, 2, 3, 4;
+
+@each $width in $border-widths {
+  .border-#{$width} {
+    border-width: #{$width}px !important;
+  }
+}
+
+.border-box {
+  box-sizing: border-box;
+}
+
+// ===========================
+// 文本大小与行高
+// ===========================
+
+// 文本大小
+$font-sizes: (
+  "xs": $font-size-xs,
+  "sm": $font-size-sm,
+  "base": $font-size-base,
+  "lg": $font-size-lg,
+  "xl": $font-size-xl,
+  "xxl": $font-size-xxl
+);
+
+@each $name, $size in $font-sizes {
+  .text-#{$name} {
+    font-size: #{$size};
+  }
+}
+
+// 额外添加 .text-df 类，保持与 .text-base 的兼容性
+.text-df {
+  font-size: $font-size-base;
+}
+
+// 字体粗细
+// 字体粗细
+$font-weights: (
+  "thin": 100,
+  "extralight": 200,
+  "light": 300,
+  "normal": 400,
+  "medium": 500,
+  "semibold": 600,
+  "bold": 700,
+  "extrabold": 800,
+  "black": 900
+);
+
+@each $name, $weight in $font-weights {
+  .font-#{$name} {
+    font-weight: #{$weight};
+  }
+}
+
+.no-wrap {
+  white-space: nowrap;
+}
+
+// 展示几行文本
+.overflow-ellipsis {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+// 多行文本截断
+$line-clamps: 2, 3;
+
+@each $lines in $line-clamps {
+  .overflow-ellipsis-#{$lines} {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: $lines;
+    -webkit-box-orient: vertical;
+  }
+}
+
+// 行高工具类
+// 行高工具类
+$line-heights: (
+  "xs": 1.2,
+  "sm": 1.4,
+  "base": $line-height-base,
+  "df": $line-height-base,
+  "lg": $line-height-large,
+  "xl": 2
+);
+
+@each $name, $height in $line-heights {
+  .line-height-#{$name} {
+    line-height: $height;
+  }
+}
+
+// 额外添加 .line-height-df 类，保持与 .line-height-base 的兼容性
+.line-height-df {
+  line-height: $line-height-base;
+}
+
+// 文字划线
+.line-through {
+  text-decoration: line-through;
+}
+
+.text-underline {
+  text-decoration: underline;
+}
+
+// ===========================
+// 间距工具类
+// ===========================
+
+// 统一间距 (margin 和 padding) 字母式命名类（手动列出）
+// 定义命名间距映射
+$spacing-names: (
+  "xs": $spacing-xs-px,
+  "sm": $spacing-sm-px,
+  "df": $spacing-base-px,
+  "md": $spacing-base-px,
+  "lg": $spacing-lg-px,
+  "xl": $spacing-xl-px,
+  "xxl": $spacing-2xl-px,
+  "xxxl": $spacing-3xl-px
+);
+
+// 使用@each循环生成margin原子类（字母式命名）
+@each $name, $value in $spacing-names {
+  .m-#{$name} {
+    margin: $value;
+  }
+  .mt-#{$name} {
+    margin-top: $value;
+  }
+  .mb-#{$name} {
+    margin-bottom: $value;
+  }
+  .ml-#{$name} {
+    margin-left: $value;
+  }
+  .mr-#{$name} {
+    margin-right: $value;
+  }
+  .mx-#{$name} {
+    margin-left: $value;
+    margin-right: $value;
+  }
+  .my-#{$name} {
+    margin-top: $value;
+    margin-bottom: $value;
+  }
+
+  // padding相关（字母式命名）
+  .p-#{$name} {
+    padding: $value;
+  }
+  .pt-#{$name} {
+    padding-top: $value;
+  }
+  .pb-#{$name} {
+    padding-bottom: $value;
+  }
+  .pl-#{$name} {
+    padding-left: $value;
+  }
+  .pr-#{$name} {
+    padding-right: $value;
+  }
+  .px-#{$name} {
+    padding-left: $value;
+    padding-right: $value;
+  }
+  .py-#{$name} {
+    padding-top: $value;
+    padding-bottom: $value;
+  }
+}
+
+// 定义间距数组
+$spaces:
+  0, 2, 6, 10, 12, 14, 18, 20, 28, 30, 36, 40, 44, 48, 52, 56, 60, 64, 68, 72, 76, 80, 88, 96, 100, 120, 140, 160, 180,
+  200;
+
+// 使用@each循环生成margin原子类
+@each $space in $spaces {
+  .m-#{$space} {
+    margin: #{$space}px;
+  }
+  .mt-#{$space} {
+    margin-top: #{$space}px;
+  }
+  .mb-#{$space} {
+    margin-bottom: #{$space}px;
+  }
+  .ml-#{$space} {
+    margin-left: #{$space}px;
+  }
+  .mr-#{$space} {
+    margin-right: #{$space}px;
+  }
+  .mx-#{$space} {
+    margin-left: #{$space}px;
+    margin-right: #{$space}px;
+  }
+  .my-#{$space} {
+    margin-top: #{$space}px;
+    margin-bottom: #{$space}px;
+  }
+  // padding相关
+  .p-#{$space} {
+    padding: #{$space}px;
+  }
+  .pt-#{$space} {
+    padding-top: #{$space}px;
+  }
+  .pb-#{$space} {
+    padding-bottom: #{$space}px;
+  }
+  .pl-#{$space} {
+    padding-left: #{$space}px;
+  }
+  .pr-#{$space} {
+    padding-right: #{$space}px;
+  }
+  .px-#{$space} {
+    padding-left: #{$space}px;
+    padding-right: #{$space}px;
+  }
+  .py-#{$space} {
+    padding-top: #{$space}px;
+    padding-bottom: #{$space}px;
+  }
+}
+
+// ===========================
+// Flex 布局工具类
+// ===========================
+
+// 基础Flex显示类
+$flex-displays: (
+  "flex": (
+    "display": flex,
+    "flex-direction": row
+  ),
+  "flex-col": (
+    "display": flex,
+    "flex-direction": column
+  ),
+  "inline-flex": (
+    "display": inline-flex,
+    "flex-direction": row
+  ),
+  "inline-flex-col": (
+    "display": inline-flex,
+    "flex-direction": column
+  )
+);
+
+@each $class, $props in $flex-displays {
+  .#{$class} {
+    display: map-get($props, "display");
+    flex-direction: map-get($props, "flex-direction");
+    align-items: center;
+  }
+}
+
+// Flex换行
+$flex-wraps: (
+  "wrap": wrap,
+  "nowrap": nowrap,
+  "wrap-reverse": wrap-reverse
+);
+
+@each $wrap, $value in $flex-wraps {
+  .flex-#{$wrap} {
+    flex-wrap: $value;
+  }
+}
+
+.flex-shrink-0 {
+  flex-shrink: 0;
+}
+
+// 主轴对齐
+$justify-items: (
+  "start": flex-start,
+  "end": flex-end,
+  "center": center,
+  "between": space-between,
+  "around": space-around,
+  "evenly": space-evenly
+);
+
+@each $align, $value in $justify-items {
+  .justify-#{$align} {
+    justify-content: $value;
+  }
+}
+
+// 交叉轴对齐
+$align-items: (
+  "start": flex-start,
+  "end": flex-end,
+  "center": center,
+  "baseline": baseline,
+  "stretch": stretch
+);
+
+@each $align, $value in $align-items {
+  .align-#{$align} {
+    align-items: $value;
+  }
+}
+
+.items-center {
+  align-items: center;
+}
+
+// 单个项目的对齐
+$align-self-items: (
+  "start": flex-start,
+  "end": flex-end,
+  "center": center,
+  "baseline": baseline,
+  "stretch": stretch
+);
+
+@each $align, $value in $align-self-items {
+  .align-self-#{$align} {
+    align-self: $value;
+  }
+}
+
+// Flex 增长因子
+$flex-grows: (
+  "1": 1,
+  "auto": auto,
+  "initial": initial,
+  "none": none
+);
+
+@each $grow, $value in $flex-grows {
+  .flex-#{$grow} {
+    flex: $value;
+  }
+}
+
+// ===========================
+// 尺寸与圆角
+// ===========================
+
+// 分数宽度 - 支持1/2到4/5
+// 从2开始，避免$i=1时内部循环的无效范围
+@for $i from 2 through 5 {
+  $end: $i - 1;
+  @for $j from 1 through $end {
+    .w-#{$j}of#{$i} {
+      width: percentage($j/$i);
+    }
+  }
+}
+
+// 分数高度 - 支持1/2到4/5
+@for $i from 2 through 5 {
+  $end: $i - 1;
+  @for $j from 1 through $end {
+    .h-#{$j}of#{$i} {
+      height: percentage($j/$i);
+    }
+  }
+}
+
+// 固定尺寸（使用px单位）
+@mixin generate-size-classes($prefix, $property) {
+  // 生成0到400px的尺寸类，步长2px
+  @for $i from 0 through 200 {
+    $size: $i * 2;
+    .#{$prefix}-#{$size} {
+      #{$property}: #{$size}px;
+    }
+  }
+
+  // 基础尺寸
+  .#{$prefix}-0 {
+    #{$property}: 0;
+  }
+  .#{$prefix}-full {
+    #{$property}: 100%;
+  }
+  .#{$prefix}-auto {
+    #{$property}: auto;
+  }
+}
+
+// 使用mixin生成宽度类
+@include generate-size-classes(w, width);
+
+// 使用mixin生成高度类
+@include generate-size-classes(h, height);
+
+//导航栏默认高度
+$nav-height: 44px;
+.nav-height {
+  height: $nav-height;
+}
+
+// 最小宽度
+$min-width-map: (
+  "0": 0,
+  "full": 100%
+);
+
+@each $size, $value in $min-width-map {
+  .min-w-#{$size} {
+    min-width: $value;
+  }
+}
+
+// 最大宽度（使用px单位）
+$max-width-map: (
+  "xs": 100px,
+  "sm": 120px,
+  "md": 140px,
+  "lg": 160px,
+  "xl": 180px,
+  "full": 100%
+);
+
+@each $size, $value in $max-width-map {
+  .max-w-#{$size} {
+    max-width: $value;
+  }
+}
+
+// 最大宽度百分比类
+$max-width-percentages: (
+  "5-percent": 5%,
+  "10-percent": 10%,
+  "20-percent": 20%,
+  "25-percent": 25%,
+  "30-percent": 30%,
+  "40-percent": 40%,
+  "50-percent": 50%,
+  "60-percent": 60%,
+  "70-percent": 70%,
+  "75-percent": 75%,
+  "80-percent": 80%,
+  "90-percent": 90%,
+  "100-percent": 100%
+);
+
+@each $name, $value in $max-width-percentages {
+  .max-w-#{$name} {
+    max-width: $value;
+  }
+}
+
+// 最小高度
+$min-height-map: (
+  "0": 0,
+  "full": 100%,
+  "screen": 100vh
+);
+
+@each $size, $value in $min-height-map {
+  .min-h-#{$size} {
+    min-height: $value;
+  }
+}
+
+// 最大高度
+$max-height-map: (
+  "0": 0,
+  "full": 100%,
+  "screen": 100vh
+);
+
+@each $size, $value in $max-height-map {
+  .max-h-#{$size} {
+    max-height: $value;
+  }
+}
+
+.radius {
+  border-radius: $radius-small;
+}
+.radius-md {
+  border-radius: $radius-medium;
+}
+.radius-lg {
+  border-radius: $radius-large;
+}
+.round {
+  border-radius: 50%;
+}
+
+// 数字直接对应的圆角原子类
+$radius-values: 2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 24, 28, 32, 36, 40, 44, 48;
+
+@each $value in $radius-values {
+  .radius-#{$value} {
+    border-radius: #{$value}px;
+  }
+}
+
+// 溢出处理
+$overflow-values: (
+  "hidden": hidden,
+  "auto": auto,
+  "scroll": scroll
+);
+
+@each $name, $value in $overflow-values {
+  .overflow-#{$name} {
+    overflow: $value;
+  }
+
+  .overflow-y-#{$name} {
+    overflow-y: $value;
+  }
+
+  .overflow-x-#{$name} {
+    overflow-x: $value;
+  }
+}
+
+// 显示/隐藏
+$visibility-values: (
+  "hidden": none,
+  "invisible": hidden
+);
+
+@each $name, $value in $visibility-values {
+  .#{$name} {
+    #{if($name == "hidden", "display", "visibility")}: $value;
+  }
+}
+
+// 宽度百分比类
+$width-percentages: (
+  "5-percent": 5%,
+  "10-percent": 10%,
+  "20-percent": 20%,
+  "25-percent": 25%,
+  "30-percent": 30%,
+  "40-percent": 40%,
+  "50-percent": 50%,
+  "60-percent": 60%,
+  "70-percent": 70%,
+  "75-percent": 75%,
+  "80-percent": 80%,
+  "90-percent": 90%,
+  "100-percent": 100%
+);
+
+@each $name, $value in $width-percentages {
+  .w-#{$name} {
+    width: $value;
+  }
+}
+
+// 模块化
+.block {
+  display: block;
+}
+
+.inline-block {
+  display: inline-block;
+}
+
+// 定位
+.relative {
+  position: relative;
+}
+.absolute {
+  position: absolute;
+}
+.fixed {
+  position: fixed;
+}
+.sticky {
+  position: sticky;
+}
+
+// 百分比定位
+.top-half {
+  top: 50%;
+}
+.bottom-half {
+  bottom: 50%;
+}
+.left-half {
+  left: 50%;
+}
+.right-half {
+  right: 50%;
+}
+
+// 定位方向
+$positions: top, right, bottom, left;
+
+@each $position in $positions {
+  .#{$position}-0 {
+    #{$position}: 0;
+  }
+}
+
+// 常用定位方向值（基于项目中使用的44px导航栏高度）
+$position-values: 44 75 90 125;
+
+@each $position in $positions {
+  @each $value in $position-values {
+    .#{$position}-#{$value} {
+      #{$position}: #{$value}px;
+    }
+  }
+
+  // 基于间距系统的定位方向原子类
+  .#{$position}-xs {
+    #{$position}: $spacing-xs-px;
+  }
+  .#{$position}-sm {
+    #{$position}: $spacing-sm-px;
+  }
+  .#{$position}-df {
+    #{$position}: $spacing-base-px;
+  }
+  .#{$position}-lg {
+    #{$position}: $spacing-lg-px;
+  }
+  .#{$position}-xl {
+    #{$position}: $spacing-xl-px;
+  }
+}
+
+.inset-0 {
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+// ===========================
+// 标签原子化样式
+// ===========================
+
+// 标签尺寸
+$tag-sizes: (
+  "xs": (
+    "font-size": 12px,
+    "padding": 2px 8px
+  ),
+  "sm": (
+    "font-size": 14px,
+    "padding": 4px 16px
+  ),
+  "md": (
+    "font-size": 16px,
+    "padding": 8px 32px
+  ),
+  "lg": (
+    "font-size": 18px,
+    "padding": 16px 64px
+  )
+);
+
+@each $size, $props in $tag-sizes {
+  .tag-#{$size} {
+    height: map-get($props, "height");
+    font-size: map-get($props, "font-size");
+    padding: map-get($props, "padding");
+  }
+}
+
+// 标签圆角
+.tag-radius {
+  border-radius: $radius-small;
+}
+.tag-round {
+  border-radius: $radius-large;
+}
+.tag-pill {
+  border-radius: 18px;
+}
+
+// 标签样式变体
+$tag-variants: (
+  "primary": (
+    "background-color": $primary-color,
+    "color": white,
+    "border": none
+  ),
+  "primary-light": (
+    "background-color": $bg-primary-light,
+    "color": $primary-color,
+    "border": none
+  ),
+  "secondary": (
+    "background-color": $text-secondary,
+    "color": white,
+    "border": none
+  ),
+  "success": (
+    "background-color": $success-color,
+    "color": white,
+    "border": none
+  ),
+  "warning": (
+    "background-color": $warning-color,
+    "color": white,
+    "border": none
+  ),
+  "error": (
+    "background-color": $error-color,
+    "color": white,
+    "border": none
+  ),
+  "outline": (
+    "background-color": transparent,
+    "border": 1px solid $border-color,
+    "color": $text-secondary
+  ),
+  "warning-light": (
+    "background-color": $bg-warning-light,
+    "color": $warning-color-light,
+    "border": none
+  ),
+  "success-light": (
+    "background-color": $bg-success-light,
+    "color": $success-color-light,
+    "border": none
+  ),
+  "info-light": (
+    "background-color": $bg-info-light,
+    "color": $info-color-light,
+    "border": none
+  )
+);
+
+@each $variant, $props in $tag-variants {
+  .tag-#{$variant} {
+    background-color: map-get($props, "background-color");
+    color: map-get($props, "color");
+    border: map-get($props, "border");
+  }
+}
+
+// 标签状态
+.tag-disabled {
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+// 彩色标签
+$tag-colors: "black", "white", "gray", "red", "orange", "yellow", "green", "blue", "indigo", "purple", "pink";
+
+@each $color in $tag-colors {
+  // 背景色标签
+  .tag-#{$color} {
+    background-color: map-get($color-map, $color);
+    color: if($color == white or $color == yellow, black, white);
+    border: none;
+  }
+
+  // 描边标签
+  .tag-outline-#{$color} {
+    background-color: transparent;
+    border: 1px solid map-get($color-map, $color);
+    color: map-get($color-map, $color);
+  }
+}
+
+// ===========================
+// 阴影
+// ===========================
+
+.shadow-sm {
+  box-shadow: $shadow-small;
+}
+.shadow-md {
+  box-shadow: $shadow-medium;
+}
+.shadow-lg {
+  box-shadow: $shadow-large;
+}
+.shadow-none {
+  box-shadow: none;
+}
+
+// z-index层级定义
+$z-index-map: (
+  "xs": 10,
+  // 最小层级，用于普通覆盖元素
+  "sm": 100,
+  // 小层级，用于普通弹窗
+  "df": 500,
+  // 默认层级，用于要弹窗
+  "md": 900,
+  // 中层级，用于模态框
+  "lg": 999,
+  // 大层级，用于重要模态框
+  "max": 9999 // 最大层级，用于顶部通知、加载遮罩等
+);
+
+// 生成z-index原子类
+$z-index-extended: $z-index-map;
+$z-index-extended: map-merge(
+  $z-index-extended,
+  (
+    "xl": 2000
+  )
+);
+
+@each $level, $value in $z-index-extended {
+  .z-#{$level} {
+    z-index: $value;
+  }
+}
+
+// 常用具体数值z-index类
+$z-index-specific: 998, 997, 1000;
+
+@each $value in $z-index-specific {
+  .z-#{$value} {
+    z-index: $value;
+  }
+}
+
+// ===========================
+// 网格布局
+// ===========================
+
+// 基础网格容器
+.grid {
+  display: grid;
+}
+
+// 网格列数
+$grid-cols: 1, 2, 3, 4;
+
+@each $cols in $grid-cols {
+  .grid-cols-#{$cols} {
+    grid-template-columns: repeat($cols, minmax(0, 1fr));
+  }
+
+  // 网格列跨度
+  @for $span from 1 through $cols {
+    .col-span-#{$span} {
+      grid-column: span $span / span $span;
+    }
+  }
+}
+
+// ===========================
+// 平移转换类
+// ===========================
+
+// 水平平移
+.translate-x-0 {
+  transform: translateX(0);
+}
+.translate-x-full {
+  transform: translateX(100%);
+}
+.-translate-x-full {
+  transform: translateX(-100%);
+}
+.translate-x-half {
+  transform: translateX(50%);
+}
+.-translate-x-half {
+  transform: translateX(-50%);
+}
+
+// 垂直平移
+.translate-y-0 {
+  transform: translateY(0);
+}
+.translate-y-full {
+  transform: translateY(100%);
+}
+.-translate-y-full {
+  transform: translateY(-100%);
+}
+.translate-y-half {
+  transform: translateY(50%);
+}
+.-translate-y-half {
+  transform: translateY(-50%);
+}
+
+// 水平和垂直居中
+.translate-center {
+  transform: translate(-50%, -50%);
+}
+
+// ===========================
+// 间距相关
+// ===========================
+
+// gap间距原子类（基于$spacing-map）
+$gap-sizes: (
+  "xs": $spacing-xs-px,
+  "sm": $spacing-sm-px,
+  "df": $spacing-base-px,
+  "lg": $spacing-lg-px,
+  "xl": $spacing-xl-px,
+  "xxl": $spacing-2xl-px,
+  "xxxl": $spacing-3xl-px
+);
+
+@each $size, $value in $gap-sizes {
+  .gap-#{$size} {
+    gap: $value;
+  }
+}

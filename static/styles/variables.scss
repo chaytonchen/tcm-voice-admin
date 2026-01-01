@@ -1,0 +1,165 @@
+/* 全局变量定义 - 与Element Plus配色保持一致 */
+$primary-color: #409eff; // 主色调：Element Plus蓝色
+$success-color: #67c23a; // 成功色：Element Plus绿色
+$success-color-light: #e1f3d8; // 成功色：Element Plus浅绿色背景
+$warning-color: #e6a23c; // 警告色：Element Plus橙色
+$warning-color-light: #faecd8; // 警告色：Element Plus浅橙色背景
+$error-color: #f56c6c; // 错误色：Element Plus红色
+$info-color: #909399; // 信息色：Element Plus灰色
+$info-color-light: #f4f4f5; // 信息色：Element Plus浅灰色背景
+$info-text: #ffffff; // 信息文本色：白色
+$text-primary: #303133; // 主要文本色：Element Plus主文本色
+$text-secondary: #606266; // 次要文本色：Element Plus次要文本色
+$text-disabled: #c0c4cc; // 禁用文本色：Element Plus禁用文本色
+$text-tips: #909399; // 提示文本颜色：Element Plus提示文本色
+$bg-primary: #ffffff; // 主要背景色：Element Plus白色
+$bg-primary-light: #fafafa; // 主要背景色：Element Plus浅灰色
+
+$bg-secondary: #f5f7fa; // 次要背景色：Element Plus浅灰色
+$bg-warning-light: #fdf6ec; // 警告色：Element Plus浅橙色背景
+$bg-success-light: #f0f9eb; // 成功色：Element Plus浅绿色背景
+$bg-info-light: #ecf5ff; // 信息色：Element Plus浅蓝色背景
+$border-color: #e4e7ed; // 边框颜色：Element Plus边框色
+$radius-small: 4px; // 小圆角
+$radius-medium: 8px; // 中圆角
+$radius-large: 12px; // 大圆角
+$shadow-small: 0 2px 4px rgba(0, 0, 0, 0.05); // 小阴影：Element Plus风格
+$shadow-medium: 0 4px 12px rgba(0, 0, 0, 0.1); // 中阴影：Element Plus风格
+$shadow-large: 0 8px 24px rgba(0, 0, 0, 0.15); // 大阴影：Element Plus风格
+$font-size-xs: 12px; // 极小字体
+$font-size-sm: 14px; // 小字体（正文使用）
+$font-size-base: 16px; // 基础字体（标题使用）
+$font-size-lg: 18px; // 大字体
+$font-size-xl: 20px; // 超大字体
+$font-size-xxl: 24px; // 超超大字体
+$font-size-button: 15px; // 按钮文字大小
+$line-height-base: 1.5; // 基础行高
+$line-height-large: 1.8; // 大行高
+
+// 技师端字体放大10%
+$font-size-xs-b: 13px; // 极小字体（技师端）
+$font-size-sm-b: 15px; // 小字体（技师端）
+$font-size-base-b: 18px; // 基础字体（技师端）
+$font-size-lg-b: 20px; // 大字体（技师端）
+$font-size-xl-b: 22px; // 超大字体（技师端）
+$font-size-button-b: 16px; // 按钮文字大小（技师端）
+// 在variables.scss文件中，添加px版本的间距变量
+$spacing-xs-px: 4px; // 极小间距 (对应4px)
+$spacing-sm-px: 8px; // 小间距 (对应8px)
+$spacing-base-px: 16px; // 基础间距 (对应16px)
+$spacing-lg-px: 24px; // 大间距 (对应24px)
+$spacing-xl-px: 32px; // 超大间距 (对应32px)
+$spacing-2xl-px: 40px;
+$spacing-3xl-px: 50px;
+
+// 按钮和输入框高度也使用px单位
+$button-height-px: 44px; // 按钮高度 (对应44px)
+$input-height-px: 44px; // 输入框高度 (对应44px)
+
+// 按钮专用变量
+$button-height-generate: 40px;
+$button-height-action: 36px;
+$button-height-profile: 40px;
+$button-font-size-generate: 14px;
+$button-font-size-action: 13px;
+$button-font-size-small: 11px;
+$button-radius-generate: 8px;
+$button-radius-action: 6px;
+$button-radius-profile: 20px;
+
+// 按钮系统变量 - 类似Element UI的尺寸和形态
+// 按钮高度变量 (px单位)
+$btn-height-xs: 30px; // 超小按钮
+$btn-height-sm: 35px; // 小按钮
+$btn-height-md: 40px; // 中等按钮 (默认)
+$btn-height-lg: 45px; // 大按钮
+
+// 按钮字体大小变量 (px单位)
+$btn-font-size-xs: 12px;
+$btn-font-size-sm: 13px;
+$btn-font-size-md: 14px;
+$btn-font-size-lg: 16px;
+
+// 按钮内边距变量 (px单位)
+$btn-padding-xs: 2px;
+$btn-padding-sm: 8px;
+$btn-padding-md: 32px;
+$btn-padding-lg: 64px;
+
+// 按钮圆角变量
+$btn-radius-base: 6px;
+$btn-radius-round: 20px; // 圆角按钮
+$btn-radius-circle: 50%; // 圆形按钮
+
+// 阴影变量 - 中医理疗风格
+$btn-shadow-base: 0 2px 4px rgba(138, 110, 72, 0.2);
+$btn-shadow-hover: 0 4px 8px rgba(138, 110, 72, 0.3);
+$btn-shadow-active: 0 1px 2px rgba(138, 110, 72, 0.3); // 按钮点击时阴影
+
+// 在文件末尾添加以下内容
+
+// 额外基础颜色和彩虹色变量
+$color-black: #000000;
+$color-white: #ffffff;
+$color-gray: #888888;
+$color-gray-light: #e6dfd3; // 浅米色，符合中医风格
+$color-gray-dark: #444444;
+$color-beige: #f5f0e6; // 米色
+$color-brown: #8a6e48; // 深棕色
+$color-brown-light: #f1ece2; // 浅棕色背景
+$color-green: #4caf50;
+$color-green-dark: #2e7d32;
+$color-green-light: #f0f7e9; // 浅绿色背景
+$color-green-text-light: #5e8c31; // 浅绿色文字（比背景深一些）
+$color-brown-text-light: #9a7e58; // 浅棕色文字（比背景深一些）
+$color-red: #ff0000;
+$color-orange: #f57c00;
+$color-yellow: #ffeb3b;
+$color-blue: #2196f3;
+$color-indigo: #3f51b5;
+$color-purple: #9c27b0;
+$color-pink: #e91e63;
+$color-cyan: #00bcd4;
+$color-teal: #009688;
+
+// 主颜色映射 - 包含所有可用颜色
+// 修改 $color-map，添加主题色和状态色
+$color-map: (
+  // 纯颜色映射（单词类优先）
+  black: $color-black,
+  white: $color-white,
+  gray: $color-gray,
+  gray-light: $color-gray-light,
+  gray-dark: $color-gray-dark,
+  green-light: $color-green-light,
+  brown-light: $color-brown-light,
+  green-text-light: $color-green-text-light,
+  green-text-dark: $color-green-dark,
+  brown-text-light: $color-brown-text-light,
+
+  // 针对黑色背景的灰色系列（数字类靠后，避免重复）
+  gray-300: #bdbdbd,
+  // 中浅灰色
+  gray-400: #9e9e9e,
+  // 中灰色，用于次要文本
+  gray-500: #757575,
+  // 较深灰色，用于提示文本
+  gray-600: #616161,
+  // 深色，用于分割线
+  gray-700: #424242,
+  // 深灰色，用于边框
+  gray-800: #212121,
+
+  // 接近黑色，用于背景
+  red: $color-red,
+  orange: $color-orange,
+  yellow: $color-yellow,
+  green: $color-green,
+  blue: $color-blue,
+  indigo: $color-indigo,
+  purple: $color-purple,
+  pink: $color-pink,
+  cyan: $color-cyan,
+  teal: $color-teal,
+  brown: $color-brown
+);
